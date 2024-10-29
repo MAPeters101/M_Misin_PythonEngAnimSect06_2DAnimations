@@ -48,5 +48,34 @@ plt.xlabel('position_x [m]',fontsize=15)
 plt.ylabel('position_y [m]',fontsize=15)
 plt.grid(True)
 
+# Position X vs time
+ax1=fig.add_subplot(gs[1,0],facecolor=(0.9,0.9,0.9))
+pos_x,=ax1.plot([],[],'-b',linewidth=3,label='X = '+str(x_i)+ ' + '+str(a)+'t')
+plt.xlim(t0,t_end)
+plt.ylim(0,max(x))
+plt.xlabel('time [s]',fontsize=15)
+plt.ylabel('position_x [m]',fontsize=15)
+plt.grid(True)
+plt.legend(loc='lower right',fontsize='x-large')
+
+# Position Y vs time
+ax2=fig.add_subplot(gs[1,1],facecolor=(0.9,0.9,0.9))
+pos_y,=ax2.plot([],[],'-b',linewidth=3,label='Y = '+str(y_i)+ ' + ('+str(b)+')t')
+plt.xlim(t0,t_end)
+plt.ylim(0,max(y)+100)
+plt.xlabel('time [s]',fontsize=15)
+plt.ylabel('position_y [m]',fontsize=15)
+plt.grid(True)
+plt.legend(loc='lower right',fontsize='x-large')
+
+
+
+
+
+
+
+
+
+
 
 plt.show()
