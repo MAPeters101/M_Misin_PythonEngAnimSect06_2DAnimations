@@ -44,9 +44,11 @@ def update_plot(num):
         length_includes_head=True,head_width=40,head_length=80,color='g',linewidth=2)
     displ_R=ax0.arrow(x_i,y_i,x[num]-x_i,y[num]-y_i,
         length_includes_head=True,head_width=40,head_length=80,color='m',linewidth=2)
+    displ_x=ax0.arrow(x_i,y_i,x[num]-x_i,0,
+        length_includes_head=True,head_width=40,head_length=80,color='r',linewidth=2)
 
     return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y,pos_R_1, \
-        pos_R_2,displ_R,
+        pos_R_2,displ_R,displ_x,
 
 
 # Set up the figure properties
