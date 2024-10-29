@@ -24,7 +24,18 @@ y=y_i+b*t
 frame_amount=len(t)
 def update_plot(num):
 
-    return
+    # Draw a plane
+    plane_1.set_data([x[num]-40,x[num]+20],[y[num],y[num]])
+    plane_2.set_data([x[num]-15,x[num]+10],[y[num],y[num]])
+    plane_3.set_data([x[num]-45,x[num]-30],[y[num]+80,y[num]])
+    plane_4.set_data([x[num]-55,x[num]-40],[y[num],y[num]])
+
+    # Trajectory
+    plane_trajectory.set_data(x[0:num],y[0:num])
+
+
+
+    return plane_1,plane_2,plane_3,plane_4,plane_trajectory
 
 
 # Set up the figure properties
@@ -68,14 +79,7 @@ plt.ylabel('position_y [m]',fontsize=15)
 plt.grid(True)
 plt.legend(loc='lower right',fontsize='x-large')
 
-
-
-
-
-
-
-
-
-
+plane_ani=animation.FuncAnimation(fig,update_plot,
+    frames=frame_amount,interval=20,repeat=True,blit=True)
 
 plt.show()
