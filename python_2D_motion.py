@@ -37,13 +37,16 @@ def update_plot(num):
     pos_x.set_data(t[0:num],x[0:num])
     pos_y.set_data(t[0:num],y[0:num])
 
-    arrow_test=ax0.arrow(0,0,1000,500,
+    # Create the arrows
+    pos_R_1=ax0.arrow(0,0,x_i,y_i,
         length_includes_head=True,head_width=40,head_length=80,color='g',linewidth=2)
-    arrow_test2=ax0.arrow(1000,500,1000,500,
-        length_includes_head=True,head_width=40,head_length=80,color='b',linewidth=2)
+    pos_R_2=ax0.arrow(0,0,x[num],y[num],
+        length_includes_head=True,head_width=40,head_length=80,color='g',linewidth=2)
+    displ_R=ax0.arrow(x_i,y_i,x[num]-x_i,y[num]-y_i,
+        length_includes_head=True,head_width=40,head_length=80,color='m',linewidth=2)
 
-    return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y,arrow_test, \
-        arrow_test2
+    return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y,pos_R_1, \
+        pos_R_2,displ_R,
 
 
 # Set up the figure properties
