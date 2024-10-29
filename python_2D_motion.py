@@ -4,7 +4,7 @@ import matplotlib.gridspec as gridspec
 import matplotlib.animation as animation
 import numpy as np
 
-type=2
+type=3
 
 # Time array
 t0=0
@@ -28,6 +28,18 @@ elif type==2:
     x_i=1000 # [m]
     a=200
     x=x_i+a*t
+
+    # Create the y array (landing)
+    y_i=1000 # [m]
+    A=500
+    f=0.1
+    y=y_i+A*np.sin(2*np.pi*f*t)
+
+elif type==3:
+    # Create the x array
+    x_i=1000 # [m]
+    a=200
+    x=x_i+a*t**2
 
     # Create the y array (landing)
     y_i=1000 # [m]
@@ -99,6 +111,8 @@ if type==1:
     pos_x,=ax1.plot([],[],'-b',linewidth=3,label='X = '+str(x_i)+ ' + '+str(a)+'t')
 elif type==2:
     pos_x,=ax1.plot([],[],'-b',linewidth=3,label='X = '+str(x_i)+ ' + '+str(a)+'t')
+elif type==3:
+    pos_x,=ax1.plot([],[],'-b',linewidth=3,label='X = '+str(x_i)+ ' + '+str(a)+'t^2')
 plt.xlim(t0,t_end)
 plt.ylim(0,max(x))
 plt.xlabel('time [s]',fontsize=15)
@@ -111,6 +125,8 @@ ax2=fig.add_subplot(gs[1,1],facecolor=(0.9,0.9,0.9))
 if type==1:
     pos_y,=ax2.plot([],[],'-b',linewidth=3,label='Y = '+str(y_i)+ ' + ('+str(b)+')t')
 elif type==2:
+    pos_y,=ax2.plot([],[],'-b',linewidth=3,label='Y = '+str(y_i)+ ' + '+str(A)+'*sin(2*pi*'+str(f)+'*t)')
+elif type==3:
     pos_y,=ax2.plot([],[],'-b',linewidth=3,label='Y = '+str(y_i)+ ' + '+str(A)+'*sin(2*pi*'+str(f)+'*t)')
 plt.xlim(t0,t_end)
 plt.ylim(0,max(y)+100)
