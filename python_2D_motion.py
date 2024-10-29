@@ -39,8 +39,11 @@ def update_plot(num):
 
     arrow_test=ax0.arrow(0,0,1000,500,
         length_includes_head=True,head_width=40,head_length=80,color='g',linewidth=2)
+    arrow_test2=ax0.arrow(1000,500,1000,500,
+        length_includes_head=True,head_width=40,head_length=80,color='b',linewidth=2)
 
-    return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y,arrow_test
+    return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y,arrow_test, \
+        arrow_test2
 
 
 # Set up the figure properties
