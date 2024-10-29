@@ -33,9 +33,11 @@ def update_plot(num):
     # Trajectory
     plane_trajectory.set_data(x[0:num],y[0:num])
 
+    # Connect plane with axes
+    pos_x.set_data(t[0:num],x[0:num])
+    pos_y.set_data(t[0:num],y[0:num])
 
-
-    return plane_1,plane_2,plane_3,plane_4,plane_trajectory
+    return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y
 
 
 # Set up the figure properties
