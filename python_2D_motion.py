@@ -139,3 +139,6 @@ plane_ani=animation.FuncAnimation(fig,update_plot,
     frames=frame_amount,interval=20,repeat=True,blit=True)
 
 plt.show()
+
+
+# New branch RotationalMotion_Lesson111
