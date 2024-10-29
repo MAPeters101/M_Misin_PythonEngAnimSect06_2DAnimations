@@ -11,7 +11,7 @@ dt=0.02
 t=np.arange(t0,t_end+dt,dt)
 
 # Create the x array
-x_i=1000 # [m]
+x_i=1000+500*np.sin(2*np.pi*0.1*t) # [m]
 a=200
 x=x_i+a*t
 
