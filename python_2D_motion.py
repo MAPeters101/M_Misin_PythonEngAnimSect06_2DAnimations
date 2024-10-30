@@ -4,7 +4,7 @@ import matplotlib.gridspec as gridspec
 import matplotlib.animation as animation
 import numpy as np
 
-type=8
+type=10
 
 # Time array
 t0=0
@@ -79,10 +79,24 @@ elif type==8:
 elif type==9:
     r=200
     f=1/5
-    a=1000
-    b=500
-    x=(1000+10*t)+(40*t)*np.cos(2*np.pi*(0.2*t)*t)
-    y=b+(40*t)*np.sin(2*np.pi*(0.2*t)*t)
+    a=1000+0*t
+    b=500+20*t
+    x=(1000+0*t)+(r)*np.cos(2*np.pi*(f)*t)
+    y=(500+20*t)+(r)*np.sin(2*np.pi*(f)*t)
+elif type==10:
+    r=200
+    f=1/5
+    a=1000+40*t
+    b=500+20*t
+    x=(1000+40*t)+(r)*np.cos(2*np.pi*(f)*t)
+    y=(500+20*t)+(r)*np.sin(2*np.pi*(f)*t)
+elif type==11:
+    r=200
+    f=1/5
+    a=1000+40*t
+    b=500+20*t
+    x=(1000+40*t)+(40*t)*np.cos(2*np.pi*(0.2*t)*t)
+    y=(500+20*t)+(40*t)*np.sin(2*np.pi*(0.2*t)*t)
 
 
 ############################## ANIMATION ##############################
@@ -138,7 +152,7 @@ def update_plot(num):
 
         return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y, \
             displ_R,displ_x,displ_y,displ_x2,displ_y2
-    else:
+    elif type==8:
         displ_R=ax0.arrow(a[num],b,x[num]-a[num],y[num]-b,
             length_includes_head=True,head_width=10,head_length=20,color='m',linewidth=2)
         displ_x=ax0.arrow(a[num],b,x[num]-a[num],0,
@@ -148,6 +162,20 @@ def update_plot(num):
         displ_x2=ax1.arrow(t[num],a[num],0,x[num]-a[num],
             length_includes_head=True,head_width=0.1,head_length=25,color='r',linewidth=2)
         displ_y2=ax2.arrow(t[num],b,0,y[num]-b,
+            length_includes_head=True,head_width=0.1,head_length=25,color='b',linewidth=2)
+
+        return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y, \
+            displ_R,displ_x,displ_y,displ_x2,displ_y2
+    else:
+        displ_R=ax0.arrow(a[num],b[num],x[num]-a[num],y[num]-b[num],
+            length_includes_head=True,head_width=10,head_length=20,color='m',linewidth=2)
+        displ_x=ax0.arrow(a[num],b[num],x[num]-a[num],0,
+            length_includes_head=True,head_width=10,head_length=20,color='r',linewidth=2)
+        displ_y=ax0.arrow(x[num],b[num],0,y[num]-b[num],
+            length_includes_head=True,head_width=10,head_length=20,color='b',linewidth=2)
+        displ_x2=ax1.arrow(t[num],a[num],0,x[num]-a[num],
+            length_includes_head=True,head_width=0.1,head_length=25,color='r',linewidth=2)
+        displ_y2=ax2.arrow(t[num],b[num],0,y[num]-b[num],
             length_includes_head=True,head_width=0.1,head_length=25,color='b',linewidth=2)
 
         return plane_1,plane_2,plane_3,plane_4,plane_trajectory,pos_x,pos_y, \
