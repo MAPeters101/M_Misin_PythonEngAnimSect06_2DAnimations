@@ -4,7 +4,7 @@ import matplotlib.gridspec as gridspec
 import matplotlib.animation as animation
 import numpy as np
 
-type=10
+type=11
 
 # Time array
 t0=0
@@ -91,6 +91,13 @@ elif type==10:
     x=(1000+40*t)+(r)*np.cos(2*np.pi*(f)*t)
     y=(500+20*t)+(r)*np.sin(2*np.pi*(f)*t)
 elif type==11:
+    r=200
+    f=1/5
+    a=1000+40*t
+    b=500+20*t
+    x=(1000+40*t)+(r)*np.cos(2*np.pi*(0.2*t)*t)
+    y=(500+20*t)+(r)*np.sin(2*np.pi*(0.2*t)*t)
+elif type==12:
     r=200
     f=1/5
     a=1000+40*t
