@@ -4,7 +4,7 @@ import matplotlib.gridspec as gridspec
 import matplotlib.animation as animation
 import numpy as np
 
-type=4
+type=5
 
 # Time array
 t0=0
@@ -17,42 +17,44 @@ if type==1:
     x_i=1000 # [m]
     a=200
     x=x_i+a*t
-
     # Create the y array (landing)
     y_i=1500 # [m]
     b=-100
     y=y_i+b*t
-
 elif type==2:
     # Create the x array
     x_i=1000 # [m]
     a=200
     x=x_i+a*t
-
     # Create the y array (landing)
     y_i=1000 # [m]
     A=500
     f=0.1
     y=y_i+A*np.sin(2*np.pi*f*t)
-
 elif type==3:
     # Create the x array
     x_i=1000 # [m]
     a=200
     x=x_i+a*t**2
-
     # Create the y array (landing)
     y_i=1000 # [m]
     A=500
     f=0.1
     y=y_i+A*np.sin(2*np.pi*f*t)
-else:
+elif type==4:
     r=200
     f=1/5
     a=1000
     b=500
     x=a+r*np.cos(2*np.pi*f*t)
     y=b+r*np.sin(2*np.pi*f*t)
+elif type==5:
+    r=200
+    f=1/5
+    a=1000
+    b=500
+    x=a+40*t*np.cos(2*np.pi*f*t)
+    y=b+40*t*np.sin(2*np.pi*f*t)
 
 
 ############################## ANIMATION ##############################
@@ -75,7 +77,7 @@ def update_plot(num):
     pos_x.set_data(t[0:num],x[0:num])
     pos_y.set_data(t[0:num],y[0:num])
 
-    if type!=4:
+    if type<4:
         # Create the arrows
         pos_R_1=ax0.arrow(0,0,x_i,y_i,
             length_includes_head=True,head_width=40,head_length=80,color='g',linewidth=2)
@@ -125,12 +127,12 @@ plane_4,=ax0.plot([],[],'w',linewidth=3)
 
 plane_trajectory,=ax0.plot([],[],'--k',linewidth=2)
 
-if type==4:
-    plt.xlim(0,2500)
-    plt.ylim(150,850)
-else:
+if type<4:
     plt.xlim(0,max(x))
     plt.ylim(0,max(y)+100)
+else:
+    plt.xlim(0,2500)
+    plt.ylim(150,850)
 plt.xlabel('position_x [m]',fontsize=15)
 plt.ylabel('position_y [m]',fontsize=15)
 plt.grid(True)
@@ -146,12 +148,12 @@ elif type==3:
 else:
     pos_x,=ax1.plot([],[],'-b',linewidth=3,label='X = '+str(a)+ ' + '+str(r)+'*cos(2pi'+str(f)+'t')
 
-if type==4:
-    plt.xlim(t0,t_end)
-    plt.ylim(500,1500)
-else:
+if type<4:
     plt.xlim(t0,t_end)
     plt.ylim(0,max(x))
+else:
+    plt.xlim(t0,t_end)
+    plt.ylim(500,1500)
 plt.xlabel('time [s]',fontsize=15)
 plt.ylabel('position_x [m]',fontsize=15)
 plt.grid(True)
@@ -168,12 +170,12 @@ elif type==3:
 else:
     pos_y,=ax2.plot([],[],'-b',linewidth=3,label='Y = '+str(b)+ ' + '+str(r)+'*sin(2*pi*'+str(f)+'*t)')
 
-if type==4:
-    plt.xlim(t0,t_end)
-    plt.ylim(0,1000)
-else:
+if type<4:
     plt.xlim(t0,t_end)
     plt.ylim(0,max(y)+100)
+else:
+    plt.xlim(t0,t_end)
+    plt.ylim(0,1000)
 plt.xlabel('time [s]',fontsize=15)
 plt.ylabel('position_y [m]',fontsize=15)
 plt.grid(True)
